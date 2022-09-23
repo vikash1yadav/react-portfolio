@@ -11,7 +11,7 @@ const ExperienceCard = ({ experience }) => {
         info,
         stack,
         logoLink,
-        desc,
+        desc="",
     } = experience
     return (
         <a

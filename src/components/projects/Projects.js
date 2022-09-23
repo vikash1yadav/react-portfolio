@@ -44,9 +44,9 @@ const client = new ApolloClient({
 })
 
 const queryInfo = {
-  owner: 'jigalin',
+  owner: 'vikash1yadav',
   repositories: [
-    'portfolio-landing-page',
+    'react-portfolio',
     'react-pokedex',
     'JS-DOM-for-beginners',
   ],
@@ -81,7 +81,7 @@ const query = gql`
 
 const Projects = () => {
   const [githubProjects, setGithubProjects] = useState([])
-  const [loadProjectsError, setLoadProjectsError] = useState(null)
+  const [loadProjectsError, setLoadProjectsError] = useState(false)
 
   const classes = useStyles()
 
@@ -98,13 +98,14 @@ const Projects = () => {
       setLoadProjectsError(false)
     } catch (error) {
       console.log(error)
+      // alert(error)
       setLoadProjectsError(true)
     }
   }
 
-  if (loadProjectsError === false) {
+  if (loadProjectsError === false ) {
     return (
-      <Section title="Projects">
+      <Section title="Projects">headers
         <div className="projects-content">
           <ul className="projects-list">
             {featured_projects.map((featuredProject) => {
@@ -122,19 +123,23 @@ const Projects = () => {
                 </li>
               )
             })}
-            {Object.keys(githubProjects).map((repo) => {
-              if (githubProjects[repo].name) {
-                return (
-                  <li key={githubProjects[repo].name}>
-                    <Fade bottom duration={1000} distance="20px">
-                      <Project project={githubProjects[repo]} type={'github'} />
-                    </Fade>
-                  </li>
-                )
-              } else {
-                return null
-              }
-            })}
+            {loadProjectsError === false ? (
+              <>
+                {Object.keys(githubProjects).map((repo) => {
+                  if (githubProjects[repo].name) {
+                    return (
+                      <li key={githubProjects[repo].name}>
+                        <Fade bottom duration={1000} distance="20px">
+                          <Project project={githubProjects[repo]} type={'github'} />
+                        </Fade>
+                      </li>
+                    )
+                  } else {
+                    return null
+                  }
+                })}
+              </>
+            ): null}
           </ul>
           <Fade bottom duration={1000} distance="20px">
             <div className="more-projects-wrapper">

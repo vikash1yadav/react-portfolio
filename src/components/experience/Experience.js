@@ -7,8 +7,39 @@ import experienceData from '../../data/experience.json'
 import constant from '../../data/constant'
 
 const Experience = () => {
-    return (
+    const featuredProject = `{
+        "id": -2,
+        "link": "https://www.raysteedsinfotech.com/",
+        "company": "Raysteeds Infotech Pvt Ltd",
+        "title": "Software Engineer | MERN Stack Developer",
+        "logoLink": "https://www.raysteedsinfotech.com/static/media/RaysteedsInfo.f78480ec.webp",
+        "dateFrom": "10 / 2021",
+        "dateTo": "current",
+        "info": [
+            "Work as a Mern Stack developer on more than 6 live projects."
+        ],
+        "stack": ["ReactJs", "NextJs", "Node.js", "Express.js", "PostgreSQL", "MySql", "NodeMailer", "PostMan", "Firebase", "AWS" ],
+        "logowidth": 80,
+        "colourPrimary": "linear-gradient(to bottom, #465a90, #1e3470)",
+        "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",
+        "desc": ""
+    }`;
+    const exp1 = JSON.parse(featuredProject)
+    console.log(exp1, "exp");
+    return (<>
         <Section title="Experience">
+            <div className="projects-content">
+                <ul className="projects-list">
+                   
+                        <Fade
+                            bottom duration={1000} distance="20px">
+                            <ExperienceCard experience={exp1} />
+                        </Fade>
+                </ul>
+            </div>
+            
+        </Section>
+        <Section title="Live Project Experience">
             <div className="experience-content">
                 <ul className="experience-list">
                     {experienceData.experience.reverse().map((exp) => (
@@ -47,6 +78,7 @@ const Experience = () => {
                 </Fade>
             </div>
         </Section>
+    </>
     )
 }
 

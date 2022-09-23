@@ -63,6 +63,27 @@
             "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",
             "desc": "Woof- My Best Buddy, is a One-stop solution to all your pet needs. Being India’s largest Pet community, we provide Door to door grooming, walking & training services."
         },
+                {
+            "id": 11,
+            "link": "#",
+            "company": "Yall Dating App",
+            "title": "PERN Developer",
+            "logoLink": "#",
+            "dateFrom": "03 / 2022",
+            "dateTo": "04 / 2022",
+            "info": [
+                "Create and integrate RestFull API to find nearby users in particular range",
+                "Implement chat option for user using real time firebase database and socket.io.",
+                "Integrate payment with RazorPay.",
+                                "Create multiple modules routes using Express.",
+                "Maintain forntend & backend project with MVC structure."
+            ],
+            "stack": ["ReactJs","Node.js", "Express.js", "PostgreSQL", "Firebase", "NodeMailer", "PostMan"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "desc": "Yall dating app is a mobile service that allows users to find love -- temporary or permanent -- as long as they have an Internet connection."
+        },
         {
             "id": 2,
             "link": "#",

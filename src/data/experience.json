@@ -1,0 +1,171 @@
+{
+    "experience": [
+        {
+            "id": -3,
+            "link": "#",
+            "logoLink":"http://irclass-ims-dev.quolam.com/static/media/logo.1b530917.png",
+            "company": "INVENTORY MANAGMENT - IRCLASS",
+            "title": "NodeJs Developer",
+            "dateFrom": "04 / 2022",
+            "dateTo": "06 / 2021",
+            "info": [
+                "Create and implement RESTfull services using NodeJs and ExpressJs..",
+                "Implement complex SQL queries using Node and Express.",
+                "Create multiple modules routes using Express.",
+                "Maintain backend project with MVC structure.",
+                "Implement cronjob functionality using NodeJs."
+            ],
+            "stack": ["NodeJs", "NodeMailer", "Express.js", "PostMan", "MySQL"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "Inventory management helps companies identify which and how much stock to order at what time"
+        },
+        {
+            "id": -2,
+            "link": "https://www.toptenelectronics.in/",
+            "company": "TOPTEN ELECTRONICS (E-COMMERCE WEB APP.)",
+            "title": "PERN Developer",
+            "logoLink": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAn1BMVEX////sAAAAAADsAAztDRnsAAb2rKv729vxb3HwU1btFB31oqL5xsb2nZ/3ubrCwsL97e3h4eH5+fl/f3/2p6fwWVztGyP+9PSUlJTKysrR0dHu7u785ubZ2dmnp6ezs7Ofn5/0kZLvRUhlZWWLi4s8PDxYWFjzf4D60tLzh4ntJiruPD7xZ2fuLzP3srPydnYUFBQwMDBvb28mJiZGRkZZu1pGAAADAUlEQVRoge2TUXOiMBSFTwRBVAwEkUCQANLWtpZu3f3/v21vQNvadtyd2d2Hncl5ULicfDm5SQArKysrKysrKysrK6v/QdF6sVh4Hv2ul8N7OJvdrcyT6Id675+ce+MZnb5PDx4NNIOicO2tMzIsF15YXsB9FvorxlJ/+RjQ6z17BsoHNky0YKzZp+xpHNG4K/+ekb1nHvDA2NLfe05KXx4Za4dgLLtMvm/MBO4MyA7AbHSVbKAv2ZQwrvs0OO9pCaHDViYiEMxZZJwmkcc20ztjCT60Ze+f4VijZ9N+qKauCTHCCTN0xnwZ4dnqBC9LhGaFRDer+QQfWzPAgXbOTi1wpusz/LX4Ch9CGrhXwjQiLHui+9fh0XTDxFDxHPdwgkeMzV6dF/BMnHYj9HE/nbvZVXhJ84+VfjpvDdydNWzTvDnfw91nNo3OcASumyL9XXhq4E5TZuKd87ItkfsGzzZz1hyuwPE4HgEDccJzz9/rQ88X1JZshBNkw65uaOOMBxwH12ziL+F+ac7YCMeKza/CsXGGh4yWiN+Akxb9GY7my+R75py2opwP0WfmnposLLx0NoyNFwGta86eCM3v3bhcpO1ndj9L0+A0O8KnQ9MGxi36A9W9dzc6WgdpmvZU8UN6aoOgDdosCtvAG3f9q9NyqSwSv/RY/ZGKXSFFooH8WNTYylxyfuS8riqObZ1ryBpadRq64nrLK0VjqlyrnaokuNY5uqoTsu5ULbn+AI8n2OKWA9sbEYuJQKEwEUpWakL/uCnyb3yLIy9uyXvUIHh8gxgTVIn6BvLs8p3udFJLqeJP8E6M8JcOxfehRlCZ3BY0L451oSaa4F1CH9TLi0kuqTLhScJpwu/FsZPoEgl5lB/bQgSlCF5QHmVwaoRXSTck3xbgLwTnP+joF5C08lioH2/JsaNkSQV0n5MXt3kikprr/JgnKBJqYryLCY5dHEutUQtwsymV1HHFK7oEcc1z8lQd8qouYDasI7jseP13zoGVlZWVlZWVlZWVldW/1k9APzq480aRVQAAAABJRU5ErkJggg==",
+            "dateFrom": "07 / 2022",
+            "dateTo": "09 / 2021",
+            "info": [
+                "Create and implement RESTfull services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                "Create real time countdown timer for special offers in frontend with React.",
+                "Implement CronJob service using Nodejs to send notifications to user and admin in specific time.",
+                "Enable Social Login/Signup functionality in frontend with React."
+            ],
+            "stack": ["ReactJs", "PostgreSQL", "Node.js", "Express.js"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "desc": "Top Ten Electronics is a well- known brand among customers when it comes to flawless customer service and ease of user experience."
+        },
+        {
+            "id": -1,
+            "link": "https://play.google.com/store/apps/details?id=com.gagan.woof",
+            "company": "WOOF-MY BEST BUDDY (PHASE: 1)",
+            "title": "PERN Developer",
+            "dateFrom": "10 / 2022",
+            "dateTo": "12 / 2021",
+            "info": [
+                "Built smooth User Interfaces screens for android and iOS",
+                "Implement Left and Right Swipe cards functionality.",
+                "Integrate screens with RESTfull APIs.",
+                "Managed complex data flow using Redux state library.",
+                "Implement RESTfull services using NodeJs and ExpressJS.",
+                "Integrate Amazon-S3 bucket to store images and videos."
+            ],
+            "stack": ["React-Native", "Firebase", "Node.js", "Express.js"],
+            "logoheight": 80,
+            "colourPrimary": "linear-gradient(to bottom, #f4592b, #f28d25)",
+            "colourSecondary": "linear-gradient(to bottom, #f4592b, #f28d25)",
+            "desc": "Holes is US based application designed to locate local food near you and local food only. View local cuisine that has been reviewed by food lovers looking for something other than your local chain restaurants",
+            "logoLink": "https://is2-ssl.mzstatic.com/image/thumb/Purple122/v4/29/c5/46/29c5465b-3706-d6ff-21b1-f694a9f0c1a3/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/460x0w.png"
+        },
+        {
+            "id": 1,
+            "link": "https://play.google.com/store/apps/details?id=com.gagan.woof",
+            "company": "WOOF-MY BEST BUDDY (PHASE: 2)",
+            "title": "PERN Developer",
+            "logoLink": "https://is2-ssl.mzstatic.com/image/thumb/Purple122/v4/29/c5/46/29c5465b-3706-d6ff-21b1-f694a9f0c1a3/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/460x0w.png",
+            "dateFrom": "03 / 2022",
+            "dateTo": "04 / 2022",
+            "info": [
+                "Integrate remote Push Notification using Firebase Cloud Messaging (FCM) for Android and iOS",
+                "Create and integrate RestFull API to find nearby users in particular range",
+                "Implement chat option for user using real time firebase database and socket.io.",
+                "Submit Android Build (aab) and iOS build (ipa) to Play Store and App store.",
+                "Integrate payment with RazorPay.",
+                "Play Store- https://play.google.com/store/apps/details?id=com.gagan.woof",
+                "App Store- https://apps.apple.com/in/app/woof-my-best-buddy/id1586297172"
+            ],
+            "stack": ["React-Native", "Firebase", "Node.js", "Express.js"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",
+            "desc": "Woof- My Best Buddy, is a One-stop solution to all your pet needs. Being India’s largest Pet community, we provide Door to door grooming, walking & training services."
+        },
+                {
+            "id": 2,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "IR-NAVGAT IRCLASS (INDIAN REG. OF SHIPPING)",
+            "title": "ReactJS Developer",
+            "dateFrom": "05 / 2022",
+            "dateTo": "Current",
+            "info": [
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["React", "Context", "TailWindCSS"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "Indian Register of Shipping (IRClass) is an international ship classification society providing ship classification and certification as well as technical inspection services"
+        },
+        {
+            "id": 2,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "Ballast Water Management (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "ReactJS Developer",
+            "dateFrom": "05 / 2022",
+            "dateTo": "Current",
+            "info": [
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["React", "Context", "TailWindCSS"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "It is an online portal for ships to reduce the harmful effects of ballast water. It is powered by IRCLASS and managed by the Directorate General of Shipping."
+        },
+                        {
+            "id": 3,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "BDN (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "ReactJS Developer",
+            "dateFrom": "08/2022",
+            "dateTo": "09/2022",
+            "info": [
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["React", "Context", "Chakra-ui"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "To Maintain clear entries in the Oil Record Book and ensure the BDN is in good order as documentary proof of vessel's compliance to the requirements."
+        },
+                {
+            "id": 3,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "E-Plan (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "ReactJS Developer",
+            "dateFrom": "05 / 2022",
+            "dateTo": "Current",
+            "info": [
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["React", "Context", "Chakra-ui"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "E-Plan is an online portal for managing ship construction and ship modification"
+        }
+    ]
+}

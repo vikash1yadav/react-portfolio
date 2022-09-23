@@ -1,0 +1,64 @@
+{
+    "skills": [
+        {
+            "id": 0,
+            "skillName": "React.js",
+            "amount": "95"
+        },
+        {
+            "id": 1,
+            "skillName": "Next.js",
+            "amount": "80"
+        },
+        {
+            "id": 2,
+            "skillName": "Node.js",
+            "amount": "85"
+        },
+        {
+            "id": 3,
+            "skillName": "Express.js",
+            "amount": "75"
+        },
+        {
+            "id": 4,
+            "skillName": "MonogoDb",
+            "amount": "70"
+        },
+        {
+            "id": 5,
+            "skillName": "PostgreSQL",
+            "amount": "90"
+        },
+        {
+            "id": 6,
+            "skillName": "Firebase",
+            "amount": "85"
+        },
+        {
+            "id": 8,
+            "skillName": "JavaScript",
+            "amount": "90"
+        },
+        {
+            "id": 7,
+            "skillName": "DSA",
+            "amount": "75"
+        },
+        {
+            "id": 9,
+            "skillName": "Git",
+            "amount": "87"
+        },
+        {
+            "id": 10,
+            "skillName": "TailWindCSS",
+            "amount": "88"
+        },
+        {
+            "id": 11,
+            "skillName": "Redux",
+            "amount": "85"
+        }
+    ]
+}

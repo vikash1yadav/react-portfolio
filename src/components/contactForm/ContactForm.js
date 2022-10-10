@@ -132,7 +132,7 @@ const ContactForm = () => {
           variant="filled"
         />
         {status === 'SUCCESS' ? (
-          <p className="email-success">Thanks!</p>
+          <p className="email-success">Thanks! I will contact you soon.</p>
         ) : (
           <Button className={classes.submit} type="submit" variant="contained">
             Submit

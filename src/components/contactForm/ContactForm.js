@@ -84,7 +84,7 @@ const ContactForm = () => {
         setEmailText('')
         setMessageText('')
         form.reset()
-        alert("I will contact you soon, Thankyou.")
+        alert("Thanks! I will contact you soon.")
         setStatus('SUCCESS')
       } else {
         setStatus('ERROR')

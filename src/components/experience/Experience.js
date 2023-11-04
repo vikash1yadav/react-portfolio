@@ -16,9 +16,9 @@ const Experience = () => {
         "dateFrom": "10 / 2021",
         "dateTo": "current",
         "info": [
-            "Work as a Mern Stack developer on more than 6 live projects."
+            "Work as a Mern Stack developer on more than 10 live projects."
         ],
-        "stack": ["ReactJs", "NextJs", "Node.js", "Express.js", "PostgreSQL", "MySql", "NodeMailer", "PostMan", "Firebase", "AWS" ],
+        "stack": ["ReactJs", "NextJs", "Node.js", "Express.js", "PostgreSQL", "MySql", "MongoDb", "MSSQL", "ORACLE", "NodeMailer", "PostMan", "Firebase", "AWS", "Tailwind Css", "Chakra-ui" ],
         "logowidth": 80,
         "colourPrimary": "linear-gradient(to bottom, #465a90, #1e3470)",
         "colourSecondary": "linear-gradient(to bottom, #465a90, #1e3470)",

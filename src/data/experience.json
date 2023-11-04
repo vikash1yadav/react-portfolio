@@ -9,7 +9,7 @@
             "dateFrom": "10 / 2021",
             "dateTo": "02 / 2022",
             "info": [
-                "Create and implement RESTfull services using NodeJs and ExpressJs..",
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
                 "Integrate RESTfull APIs with frontend in ReactJs.",
                 "Create real time countdown timer for special offers in frontend with React.",
                 "Implement CronJob service using Nodejs to send notifications to user and admin in specific time.",
@@ -30,7 +30,8 @@
             "dateFrom": "12 / 2021",
             "dateTo": "03 / 2022",
             "info": [
-                "Create and implement RESTfull services using NodeJs and ExpressJs..",
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
                 "Implement complex SQL queries using Node and Express.",
                 "Create multiple modules routes using Express.",
                 "Maintain forntend & backend project with MVC structure.",
@@ -55,7 +56,9 @@
                 "Create and integrate RestFull API to find nearby users in particular range",
                 "Implement chat option for user using real time firebase database and socket.io.",
                 "Integrate payment with RazorPay.",
-                "Play Store- https://play.google.com/store/apps/details?id=com.gagan.woof"
+                "Play Store- https://play.google.com/store/apps/details?id=com.gagan.woof",
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs."
             ],
             "stack": ["ReactJs","Node.js", "Express.js", "PostgreSQL", "Firebase", "NodeMailer", "PostMan"],
             "logowidth": 80,
@@ -89,16 +92,18 @@
             "link": "#",
             "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
             "company": "Ballast Water Management (IRCLASS INDIAN REG. OF SHIPPING)",
-            "title": "ReactJS Developer",
+            "title": "MERN Stack Developer",
             "dateFrom": "07 / 2022",
             "dateTo": "08/2022",
             "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
                 "Built smooth User Interfaces screens using functional component.",
                 "Built reusable components using hooks.",
                 "Manage complex data flow throught application using context",
                 "Integrate RESTful APIs using inbuilt method of react."
             ],
-            "stack": ["React", "Context", "TailWindCSS"],
+            "stack": ["NodeJs", "React", "Context", "Chakra-ui", "Oracle"],
             "logowidth": 80,
             "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
             "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
@@ -109,16 +114,18 @@
             "link": "#",
             "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
             "company": "BDN (IRCLASS INDIAN REG. OF SHIPPING)",
-            "title": "ReactJS Developer",
+            "title": "MERN Stack Developer",
             "dateFrom": "08/2022",
             "dateTo": "09/2022",
             "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
                 "Built smooth User Interfaces screens using functional component.",
                 "Built reusable components using hooks.",
                 "Manage complex data flow throught application using context",
                 "Integrate RESTful APIs using inbuilt method of react."
             ],
-            "stack": ["React", "Context", "Chakra-ui"],
+            "stack":["NodeJs", "React", "Context", "Chakra-ui", "Oracle"],
             "logowidth": 80,
             "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
             "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
@@ -129,20 +136,115 @@
             "link": "#",
             "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
             "company": "E-Plan (IRCLASS INDIAN REG. OF SHIPPING)",
-            "title": "ReactJS Developer",
+            "title": "MERN Stack Developer",
             "dateFrom": "05 / 2022",
             "dateTo": "Current",
             "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                "Developed a comprehensive suite of digital signature solutions specifically designed for PDF editing.",
                 "Built smooth User Interfaces screens using functional component.",
                 "Built reusable components using hooks.",
                 "Manage complex data flow throught application using context",
                 "Integrate RESTful APIs using inbuilt method of react."
             ],
-            "stack": ["React", "Context", "Chakra-ui"],
+            "stack": ["NodeJs", "React", "Context", "Chakra-ui", "Oracle"],
             "logowidth": 80,
             "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
             "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
             "desc": "E-Plan is an online portal for managing ship construction and ship modification"
+        },
+
+        {
+            "id": 4,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "IRNAVGATH (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "MERN Stack Developer",
+            "dateFrom": "",
+            "dateTo": "",
+            "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                "Developed a comprehensive suite of digital signature solutions specifically designed for PDF editing.",
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["NodeJs", "React", "React-Context", "Tailwind-css", "MSSQL", "Oracle", "NodeMailer"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "IRNAVGATH is an online portal for managing ship construction and ship modification"
+        },
+        {
+            "id": 5,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "IFCR (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "MERN Stack Developer",
+            "dateFrom": "",
+            "dateTo": "",
+            "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["NodeJs", "React", "React-Context", "Chakra-ui", "MSSQL",  "NodeMailer"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "IFCR is an online portal for IRCLASS for managing fuel consumption of ship"
+        },
+        {
+            "id": 6,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "DGS-Audit (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "MERN Stack Developer",
+            "dateFrom": "",
+            "dateTo": "",
+            "info": [
+                "Create and implement RESTfull API services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["NodeJs", "React", "React-Context", "Chakra-ui", "MSSQL",  "NodeMailer"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "DGS-Audit is an online portal for IRCLASS for managing port and ship inspection."
+        },
+        {
+            "id": 7,
+            "link": "#",
+            "logoLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbjBtxU9t4YctgtQ7BJ0PWyBGE92RONe5D08fvGg9DCOa_jblhXQhkKWxY2W0PPosKWo8&usqp=CAU",
+            "company": "RO-Audit (IRCLASS INDIAN REG. OF SHIPPING)",
+            "title": "MERN Stack Developer",
+            "dateFrom": "",
+            "dateTo": "",
+            "info": [
+                "Create and implement RESTfull services using NodeJs and ExpressJs..",
+                "Integrate RESTfull APIs with frontend in ReactJs.",
+                
+                "Built smooth User Interfaces screens using functional component.",
+                "Built reusable components using hooks.",
+                "Manage complex data flow throught application using context",
+                "Integrate RESTful APIs using inbuilt method of react."
+            ],
+            "stack": ["NodeJs", "React", "React-Context", "Chakra-ui", "MSSQL",  "NodeMailer"],
+            "logowidth": 80,
+            "colourPrimary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "colourSecondary": "linear-gradient(to bottom, #39b175, #0be779)",
+            "desc": "RO-Audit is an online portal for Indian Government for managing port and ship inspection, and it is powered by IRCLASS"
         }
     ]
 }

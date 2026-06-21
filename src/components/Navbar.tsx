@@ -27,7 +27,7 @@ export function Navbar() {
       // Section tracking for active state
       const sections = navLinks.map((link) => link.href.substring(1));
       let currentSection = "";
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -50,7 +50,7 @@ export function Navbar() {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
+
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
@@ -70,11 +70,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
             ? "border-b border-border bg-background/80 backdrop-blur-md shadow-xs py-3"
             : "bg-transparent py-5"
-        }`}
+          }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -95,11 +94,10 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`text-sm font-medium transition-colors hover:text-foreground relative ${
-                    activeSection === link.href.substring(1)
+                  className={`text-sm font-medium transition-colors hover:text-foreground relative ${activeSection === link.href.substring(1)
                       ? "text-foreground"
                       : "text-muted-foreground"
-                  }`}
+                    }`}
                 >
                   {link.name}
                   {activeSection === link.href.substring(1) && (
@@ -171,11 +169,10 @@ export function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className={`text-lg font-medium transition-colors hover:text-foreground ${
-                      activeSection === link.href.substring(1)
+                    className={`text-lg font-medium transition-colors hover:text-foreground ${activeSection === link.href.substring(1)
                         ? "text-primary-accent"
                         : "text-muted-foreground"
-                    }`}
+                      }`}
                   >
                     {link.name}
                   </a>

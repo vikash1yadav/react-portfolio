@@ -4,9 +4,101 @@ import React, { useState, useEffect, useRef } from "react";
 import { Terminal as TerminalIcon, Maximize2, Minimize2, X } from "lucide-react";
 import { personalInfo, experience, skills, projects } from "@/data/content";
 
+interface Line {
+  text: string;
+  type?: "default" | "accent" | "success" | "error" | "link";
+  href?: string;
+}
+
 interface HistoryItem {
   command?: string;
-  output: React.ReactNode;
+  lines: Line[];
+}
+
+// Renders individual line based on type
+function renderLineContent(line: Line) {
+  const colorMap = {
+    default: "text-zinc-300",
+    accent: "text-primary-accent font-bold",
+    success: "text-emerald-400 font-semibold",
+    error: "text-red-400",
+    link: "text-primary-accent hover:underline cursor-pointer",
+  };
+
+  const className = colorMap[line.type || "default"];
+
+  if (line.type === "link" && line.href) {
+    return (
+      <a href={line.href} target="_blank" rel="noreferrer" className={className}>
+        {line.text}
+      </a>
+    );
+  }
+
+  return <span className={className}>{line.text}</span>;
+}
+
+// Component to stream lines one by one, character by character
+function StreamingLines({ lines, speed = 3, onComplete }: { lines: Line[]; speed?: number; onComplete?: () => void }) {
+  const [visibleLineCount, setVisibleLineCount] = useState(0);
+  const [currentLineText, setCurrentLineText] = useState("");
+
+  useEffect(() => {
+    if (lines.length === 0) {
+      onComplete?.();
+      return;
+    }
+
+    let lineIdx = 0;
+    let charIdx = 0;
+    setVisibleLineCount(0);
+    setCurrentLineText("");
+
+    const interval = setInterval(() => {
+      if (lineIdx >= lines.length) {
+        clearInterval(interval);
+        onComplete?.();
+        return;
+      }
+
+      const currentLine = lines[lineIdx];
+      if (!currentLine.text) {
+        // Handle empty lines instantly
+        lineIdx++;
+        charIdx = 0;
+        setVisibleLineCount((prev) => prev + 1);
+        setCurrentLineText("");
+        return;
+      }
+
+      setCurrentLineText((prev) => prev + currentLine.text.charAt(charIdx));
+      charIdx++;
+
+      if (charIdx >= currentLine.text.length) {
+        lineIdx++;
+        charIdx = 0;
+        setVisibleLineCount((prev) => prev + 1);
+        setCurrentLineText("");
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [lines, speed]);
+
+  return (
+    <div className="space-y-1">
+      {lines.slice(0, visibleLineCount).map((line, idx) => (
+        <div key={idx} className="font-mono text-sm leading-relaxed whitespace-pre-wrap">
+          {renderLineContent(line)}
+        </div>
+      ))}
+      {visibleLineCount < lines.length && (
+        <div className="font-mono text-sm leading-relaxed whitespace-pre-wrap">
+          {renderLineContent({ ...lines[visibleLineCount], text: currentLineText })}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function Terminal() {
@@ -16,41 +108,29 @@ export function Terminal() {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const terminalEndRef = useRef<HTMLDivElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  const banner = (
-    <pre className="text-[10px] leading-[12px] sm:text-xs text-primary-accent font-mono font-bold select-none overflow-x-auto py-2">
-{` __      __ _ _                  _  __                                
- \\ \\    / /(_) |                | |/ /                                
-  \\ \\  / /  _| | ____ _ ___     | ' / _   _ _ __ ___   __ _ _ __      
-   \\ \\/ /  | | |/ / _\` / __|    |  < | | | | '_ \` _ \\ / _\` | '__|     
-    \\  /   | |   < (_| \\__ \\    | . \\| |_| | | | | | | (_| | |        
-     \\/    |_|_|\\_\\__,_|___/    |_|\\_\\\\__,_|_| |_| |_|\\__,_|_|        `}
-    </pre>
-  );
-
-  const welcomeMessage = (
-    <div className="text-sm font-mono text-muted-foreground/80 mt-2 select-none">
-      <p>Welcome to Vikas Kumar's interactive terminal portfolio (v1.0.0).</p>
-      <p className="mt-1">
-        Type <span className="text-emerald-400 font-semibold">help</span> to view all available commands.
-      </p>
-    </div>
-  );
+  const bannerLines: Line[] = [
+    { text: " __      __ _ _                  _  __                                ", type: "accent" },
+    { text: " \\ \\    / /(_) |                | |/ /                                ", type: "accent" },
+    { text: "  \\ \\  / /  _| | ____ _ ___     | ' / _   _ _ __ ___   __ _ _ __      ", type: "accent" },
+    { text: "   \\ \\/ /  | | |/ / _` / __|    |  < | | | | '_ ` _ \\ / _` | '__|     ", type: "accent" },
+    { text: "    \\  /   | |   < (_| \\__ \\    | . \\| |_| | | | | | | (_| | |        ", type: "accent" },
+    { text: "     \\/    |_|_|\\_\\__,_|___/    |_|\\_\\\\__,_|_| |_| |_|\\__,_|_|        ", type: "accent" },
+    { text: "" },
+    { text: "Welcome to Vikas Kumar's interactive terminal portfolio (v1.0.0).", type: "default" },
+    { text: "Type help to view all available commands.", type: "success" },
+    { text: "" }
+  ];
 
   // Initialize terminal with banner
   useEffect(() => {
     setHistory([
       {
-        output: (
-          <>
-            {banner}
-            {welcomeMessage}
-          </>
-        ),
+        lines: bannerLines,
       },
     ]);
   }, []);
@@ -60,218 +140,159 @@ export function Terminal() {
     if (bodyRef.current) {
       bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
     }
-  }, [history, isMinimized]);
+  }, [history, isMinimized, isTyping]);
 
   // Focus input on terminal body click
   const handleTerminalClick = () => {
-    inputRef.current?.focus();
+    if (!isTyping) {
+      inputRef.current?.focus();
+    }
   };
 
   const handleCommandSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isTyping) return;
+
     const trimmedInput = input.trim();
     if (!trimmedInput) return;
 
     const parts = trimmedInput.split(" ");
     const command = parts[0].toLowerCase();
-    const args = parts.slice(1);
 
     // Save to cmd history
     setCmdHistory((prev) => [...prev, trimmedInput]);
     setHistoryIndex(-1);
+    setIsTyping(true);
 
-    let output: React.ReactNode = null;
+    let responseLines: Line[] = [];
 
     switch (command) {
       case "help":
-        output = (
-          <div className="grid grid-cols-[120px_1fr] gap-x-4 gap-y-1 font-mono text-sm">
-            <span className="text-emerald-400">help</span>
-            <span className="text-muted-foreground">List all available commands</span>
-            
-            <span className="text-emerald-400">about</span>
-            <span className="text-muted-foreground">Display brief bio information</span>
-            
-            <span className="text-emerald-400">experience</span>
-            <span className="text-muted-foreground">Show professional work history timeline</span>
-            
-            <span className="text-emerald-400">skills</span>
-            <span className="text-muted-foreground">List technical skill categories & tools</span>
-            
-            <span className="text-emerald-400">projects</span>
-            <span className="text-muted-foreground">List portfolio projects with links</span>
-            
-            <span className="text-emerald-400">contact</span>
-            <span className="text-muted-foreground">Show direct contact channels & social profiles</span>
-            
-            <span className="text-emerald-400">socials</span>
-            <span className="text-muted-foreground">Display clickable social media profile links</span>
-            
-            <span className="text-emerald-400">whoami</span>
-            <span className="text-muted-foreground">Display current role and professional summary</span>
-            
-            <span className="text-emerald-400">banner</span>
-            <span className="text-muted-foreground">Redisplay the ASCII art banner</span>
-            
-            <span className="text-emerald-400">clear</span>
-            <span className="text-muted-foreground">Clear the terminal screen history</span>
-          </div>
-        );
+        responseLines = [
+          { text: "Available commands:", type: "accent" },
+          { text: "  help        - List all available commands", type: "success" },
+          { text: "  about       - Display brief bio information", type: "success" },
+          { text: "  experience  - Show professional work history timeline", type: "success" },
+          { text: "  skills      - List technical skill categories & tools", type: "success" },
+          { text: "  projects    - List portfolio projects with links", type: "success" },
+          { text: "  contact     - Show direct contact channels", type: "success" },
+          { text: "  socials     - Display clickable social media profile links", type: "success" },
+          { text: "  whoami      - Display current role & location", type: "success" },
+          { text: "  banner      - Redisplay the ASCII art banner", type: "success" },
+          { text: "  clear       - Clear the terminal screen history", type: "success" }
+        ];
         break;
 
       case "about":
-        output = (
-          <div className="font-mono text-sm leading-relaxed max-w-3xl space-y-2">
-            <p className="text-primary-accent font-semibold">{personalInfo.name}</p>
-            <p className="text-emerald-400 font-medium">{personalInfo.title} — {personalInfo.subtitle}</p>
-            {personalInfo.bioParagraphs.map((para, idx) => (
-              <p key={idx} className="text-muted-foreground">{para}</p>
-            ))}
-          </div>
-        );
+        responseLines = [
+          { text: personalInfo.name, type: "accent" },
+          { text: `${personalInfo.title} — ${personalInfo.subtitle}`, type: "success" },
+          { text: "" },
+          ...personalInfo.bioParagraphs.map(p => ({ text: p, type: "default" as const }))
+        ];
         break;
 
       case "whoami":
-        output = (
-          <div className="font-mono text-sm text-muted-foreground max-w-2xl space-y-1">
-            <p><span className="text-emerald-400">Role:</span> {personalInfo.title}</p>
-            <p><span className="text-emerald-400">Location:</span> {personalInfo.location}</p>
-            <p><span className="text-emerald-400">Focus:</span> Decomposing monoliths into high-throughput microservices, optimization, and frontend engineering.</p>
-            <p><span className="text-emerald-400">Statement:</span> "Building high-performance, developer-focused clean code and resilient architectures."</p>
-          </div>
-        );
+        responseLines = [
+          { text: `Role:       ${personalInfo.title}`, type: "default" },
+          { text: `Location:   ${personalInfo.location}`, type: "default" },
+          { text: `Focus:      Backend microservices architectures, DB migrations, and Next.js optimization.`, type: "default" },
+          { text: `Statement:  "${personalInfo.valueProp}"`, type: "success" }
+        ];
         break;
 
       case "experience":
-        output = (
-          <div className="font-mono text-sm space-y-4 max-w-3xl">
-            {experience.map((exp, idx) => (
-              <div key={idx} className="border-l-2 border-border pl-3 ml-1">
-                <div className="flex flex-col sm:flex-row sm:justify-between">
-                  <span className="text-emerald-400 font-bold">{exp.role}</span>
-                  <span className="text-primary-accent font-semibold">{exp.period}</span>
-                </div>
-                <div className="text-muted-foreground text-xs font-semibold mb-1">
-                  {exp.company} • {exp.location}
-                </div>
-                {exp.projects && exp.projects.map((proj, pIdx) => (
-                  <div key={pIdx} className="mt-2 pl-2">
-                    <p className="text-emerald-400/90 font-medium text-xs">Project: {proj.name}</p>
-                    <ul className="list-disc list-inside text-muted-foreground text-xs space-y-0.5 mt-0.5">
-                      {proj.achievements.map((ach, aIdx) => (
-                        <li key={aIdx} className="leading-relaxed">{ach}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-                {!exp.projects && exp.achievements && (
-                  <ul className="list-disc list-inside text-muted-foreground text-xs space-y-0.5 mt-1">
-                    {exp.achievements.map((ach, aIdx) => (
-                      <li key={aIdx}>{ach}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        );
+        experience.forEach((exp) => {
+          responseLines.push({ text: `=== ${exp.role} ===`, type: "accent" });
+          responseLines.push({ text: `${exp.company} | ${exp.location} | ${exp.period}`, type: "success" });
+          if (exp.projects) {
+            exp.projects.forEach((proj) => {
+              responseLines.push({ text: `  Project: ${proj.name}`, type: "accent" });
+              proj.achievements.forEach((ach) => {
+                responseLines.push({ text: `    • ${ach}`, type: "default" });
+              });
+            });
+          } else if (exp.achievements) {
+            exp.achievements.forEach((ach) => {
+              responseLines.push({ text: `  • ${ach}`, type: "default" });
+            });
+          }
+          responseLines.push({ text: "" });
+        });
         break;
 
       case "skills":
-        output = (
-          <div className="font-mono text-sm space-y-3 max-w-3xl">
-            {skills.map((cat, idx) => (
-              <div key={idx} className="grid grid-cols-[140px_1fr] gap-x-2">
-                <span className="text-emerald-400 font-bold">{cat.category}:</span>
-                <span className="text-muted-foreground">{cat.skills.join(", ")}</span>
-              </div>
-            ))}
-          </div>
-        );
+        responseLines.push({ text: "=== Technical Skill Matrix ===", type: "accent" });
+        skills.forEach((cat) => {
+          responseLines.push({ text: `${cat.category.padEnd(14)}: ${cat.skills.join(", ")}`, type: "default" });
+        });
         break;
 
       case "projects":
-        output = (
-          <div className="font-mono text-sm space-y-3 max-w-3xl">
-            {projects.map((proj, idx) => (
-              <div key={idx} className="border-b border-border/40 pb-2 last:border-b-0">
-                <div className="flex justify-between items-center">
-                  <span className="text-emerald-400 font-bold">{proj.title}</span>
-                  <div className="flex gap-3 text-xs">
-                    {proj.githubUrl && (
-                      <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="text-primary-accent hover:underline">
-                        GitHub
-                      </a>
-                    )}
-                    {proj.liveUrl && (
-                      <a href={proj.liveUrl} target="_blank" rel="noreferrer" className="text-primary-accent hover:underline">
-                        Live
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <p className="text-muted-foreground text-xs mt-1">{proj.description}</p>
-                <div className="text-[11px] text-muted-foreground/60 mt-1">
-                  Stack: {proj.techTags.join(", ")}
-                </div>
-              </div>
-            ))}
-          </div>
-        );
+        projects.forEach((proj) => {
+          responseLines.push({ text: `▶ ${proj.title}`, type: "accent" });
+          responseLines.push({ text: proj.description, type: "default" });
+          responseLines.push({ text: `Stack: ${proj.techTags.join(", ")}`, type: "default" });
+          if (proj.githubUrl) {
+            responseLines.push({ text: `  GitHub: ${proj.githubUrl}`, type: "link", href: proj.githubUrl });
+          }
+          if (proj.liveUrl) {
+            responseLines.push({ text: `  Live:   ${proj.liveUrl}`, type: "link", href: proj.liveUrl });
+          }
+          responseLines.push({ text: "" });
+        });
         break;
 
       case "contact":
-        output = (
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <p><span className="text-emerald-400">Email:</span> <a href={`mailto:${personalInfo.email}`} className="hover:underline text-primary-accent">{personalInfo.email}</a></p>
-            <p><span className="text-emerald-400">Phone:</span> <a href={`tel:${personalInfo.phone}`} className="hover:underline">{personalInfo.phone}</a></p>
-            <p><span className="text-emerald-400">Location:</span> {personalInfo.location}</p>
-            <p><span className="text-emerald-400">Resume:</span> <a href={personalInfo.resumeUrl} download className="hover:underline text-primary-accent">Download PDF</a></p>
-          </div>
-        );
+        responseLines = [
+          { text: "=== Contact Channels ===", type: "accent" },
+          { text: `Email:  ${personalInfo.email}`, type: "link", href: `mailto:${personalInfo.email}` },
+          { text: `Phone:  ${personalInfo.phone}` },
+          { text: `Loc:    ${personalInfo.location}` },
+          { text: "Resume: Download PDF", type: "link", href: personalInfo.resumeUrl }
+        ];
         break;
 
       case "socials":
-        output = (
-          <div className="font-mono text-sm text-muted-foreground space-y-1">
-            <p><span className="text-emerald-400">GitHub:</span> <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:underline text-primary-accent">{personalInfo.github}</a></p>
-            <p><span className="text-emerald-400">LinkedIn:</span> <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:underline text-primary-accent">{personalInfo.linkedin}</a></p>
-          </div>
-        );
+        responseLines = [
+          { text: "=== Social Profiles ===", type: "accent" },
+          { text: `GitHub:   ${personalInfo.github}`, type: "link", href: personalInfo.github },
+          { text: `LinkedIn: ${personalInfo.linkedin}`, type: "link", href: personalInfo.linkedin }
+        ];
         break;
 
       case "banner":
-        output = banner;
+        responseLines = bannerLines;
         break;
 
       case "clear":
         setHistory([]);
         setInput("");
+        setIsTyping(false);
         return;
 
       default:
-        output = (
-          <div className="font-mono text-sm text-red-400">
-            command not found: {command}. Type <span className="font-semibold underline">help</span> for available commands.
-          </div>
-        );
+        responseLines = [
+          { text: `command not found: ${command}`, type: "error" },
+          { text: "Type 'help' to see all available commands.", type: "default" }
+        ];
         break;
     }
 
-    setHistory((prev) => [...prev, { command: trimmedInput, output }]);
+    setHistory((prev) => [...prev, { command: trimmedInput, lines: responseLines }]);
     setInput("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (cmdHistory.length === 0) return;
+      if (cmdHistory.length === 0 || isTyping) return;
       const newIndex = historyIndex === -1 ? cmdHistory.length - 1 : Math.max(0, historyIndex - 1);
       setHistoryIndex(newIndex);
       setInput(cmdHistory[newIndex]);
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
-      if (historyIndex === -1) return;
+      if (historyIndex === -1 || isTyping) return;
       const newIndex = historyIndex + 1;
       if (newIndex >= cmdHistory.length) {
         setHistoryIndex(-1);
@@ -336,14 +357,10 @@ export function Terminal() {
                   e.stopPropagation();
                   setHistory([
                     {
-                      output: (
-                        <>
-                          {banner}
-                          {welcomeMessage}
-                        </>
-                      ),
+                      lines: bannerLines,
                     },
                   ]);
+                  setIsTyping(false);
                 }}
                 className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors flex items-center justify-center group"
                 title="Reset Session"
@@ -379,10 +396,20 @@ export function Terminal() {
                       <span className="text-zinc-100">{item.command}</span>
                     </div>
                   )}
-                  <div className="text-zinc-300 leading-relaxed">{item.output}</div>
+                  {/* Stream the latest item, render others statically */}
+                  {idx === history.length - 1 ? (
+                    <StreamingLines lines={item.lines} speed={2} onComplete={() => setIsTyping(false)} />
+                  ) : (
+                    <div className="space-y-1">
+                      {item.lines.map((line, lIdx) => (
+                        <div key={lIdx} className="font-mono text-sm leading-relaxed whitespace-pre-wrap">
+                          {renderLineContent(line)}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
-              <div ref={terminalEndRef} />
             </div>
 
             {/* Current Input Prompt */}
@@ -394,7 +421,8 @@ export function Terminal() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent text-zinc-100 border-none outline-hidden focus:ring-0 font-mono caret-emerald-400"
+                disabled={isTyping}
+                className="flex-1 bg-transparent text-zinc-100 border-none outline-hidden focus:ring-0 font-mono caret-emerald-400 disabled:opacity-50"
                 autoFocus
                 autoComplete="off"
                 autoCorrect="off"

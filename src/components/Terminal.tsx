@@ -19,6 +19,7 @@ export function Terminal() {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalEndRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   const banner = (
     <pre className="text-[10px] leading-[12px] sm:text-xs text-primary-accent font-mono font-bold select-none overflow-x-auto py-2">
@@ -54,9 +55,11 @@ export function Terminal() {
     ]);
   }, []);
 
-  // Auto-scroll to bottom of terminal
+  // Auto-scroll to bottom of terminal container only
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
   }, [history, isMinimized]);
 
   // Focus input on terminal body click
@@ -361,6 +364,7 @@ export function Terminal() {
 
           {/* Terminal Body */}
           <div
+            ref={bodyRef}
             className={`flex-1 p-4 overflow-y-auto font-mono scrollbar-thin scrollbar-thumb-zinc-800 ${
               isMinimized ? "hidden" : "block"
             }`}

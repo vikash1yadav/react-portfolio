@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, animate } from "framer-motion";
 import { personalInfo, stats } from "@/data/content";
+import avatarImg from "../../public/avatar.png";
 
 function Counter({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -121,7 +122,7 @@ export function About() {
               <div className="absolute inset-0 border border-primary-accent/20 rounded-2xl scale-[1.03] -z-10 transition-all duration-300 group-hover:scale-[1.05]" />
               
               <Image
-                src="/avatar.png"
+                src={avatarImg}
                 alt={personalInfo.name}
                 fill
                 priority

@@ -39,9 +39,26 @@ function renderLineContent(line: Line) {
 }
 
 // Component to stream lines one by one, character by character
-function StreamingLines({ lines, speed = 3, onComplete }: { lines: Line[]; speed?: number; onComplete?: () => void }) {
+function StreamingLines({
+  lines,
+  speed = 3,
+  onComplete,
+  containerRef,
+}: {
+  lines: Line[];
+  speed?: number;
+  onComplete?: () => void;
+  containerRef: React.RefObject<HTMLDivElement | null>;
+}) {
   const [visibleLineCount, setVisibleLineCount] = useState(0);
   const [currentLineText, setCurrentLineText] = useState("");
+
+  // Scroll to bottom dynamically as the characters stream in
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [currentLineText, visibleLineCount, containerRef]);
 
   useEffect(() => {
     if (lines.length === 0) {
@@ -398,7 +415,7 @@ export function Terminal() {
                   )}
                   {/* Stream the latest item, render others statically */}
                   {idx === history.length - 1 ? (
-                    <StreamingLines lines={item.lines} speed={2} onComplete={() => setIsTyping(false)} />
+                    <StreamingLines lines={item.lines} speed={2} onComplete={() => setIsTyping(false)} containerRef={bodyRef} />
                   ) : (
                     <div className="space-y-1">
                       {item.lines.map((line, lIdx) => (

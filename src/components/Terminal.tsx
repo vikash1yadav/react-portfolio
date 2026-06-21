@@ -440,7 +440,6 @@ export function Terminal() {
                 onKeyDown={handleKeyDown}
                 disabled={isTyping}
                 className="flex-1 bg-transparent text-zinc-100 border-none outline-hidden focus:ring-0 font-mono caret-emerald-400 disabled:opacity-50"
-                autoFocus
                 autoComplete="off"
                 autoCorrect="off"
                 autoCapitalize="off"

@@ -40,7 +40,8 @@ export function Hero() {
     let currentIdx = 0;
     const commandInterval = safeSetInterval(() => {
       if (currentIdx < commandText.length) {
-        setTypedCommand((prev) => prev + commandText.charAt(currentIdx));
+        const char = commandText.charAt(currentIdx);
+        setTypedCommand((prev) => prev + char);
         currentIdx++;
       } else {
         clearInterval(commandInterval);
@@ -56,7 +57,8 @@ export function Hero() {
       let nameIdx = 0;
       const nameInterval = safeSetInterval(() => {
         if (nameIdx < personalInfo.name.length) {
-          setTypedName((prev) => prev + personalInfo.name.charAt(nameIdx));
+          const char = personalInfo.name.charAt(nameIdx);
+          setTypedName((prev) => prev + char);
           nameIdx++;
         } else {
           clearInterval(nameInterval);
@@ -73,7 +75,8 @@ export function Hero() {
       let titleIdx = 0;
       const titleInterval = safeSetInterval(() => {
         if (titleIdx < personalInfo.title.length) {
-          setTypedTitle((prev) => prev + personalInfo.title.charAt(titleIdx));
+          const char = personalInfo.title.charAt(titleIdx);
+          setTypedTitle((prev) => prev + char);
           titleIdx++;
         } else {
           clearInterval(titleInterval);
@@ -90,7 +93,8 @@ export function Hero() {
       let subtitleIdx = 0;
       const subtitleInterval = safeSetInterval(() => {
         if (subtitleIdx < personalInfo.subtitle.length) {
-          setTypedSubtitle((prev) => prev + personalInfo.subtitle.charAt(subtitleIdx));
+          const char = personalInfo.subtitle.charAt(subtitleIdx);
+          setTypedSubtitle((prev) => prev + char);
           subtitleIdx++;
         } else {
           clearInterval(subtitleInterval);
@@ -107,7 +111,8 @@ export function Hero() {
       let bioIdx = 0;
       const bioInterval = safeSetInterval(() => {
         if (bioIdx < personalInfo.valueProp.length) {
-          setTypedBio((prev) => prev + personalInfo.valueProp.charAt(bioIdx));
+          const char = personalInfo.valueProp.charAt(bioIdx);
+          setTypedBio((prev) => prev + char);
           bioIdx++;
         } else {
           clearInterval(bioInterval);

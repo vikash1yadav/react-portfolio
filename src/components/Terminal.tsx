@@ -88,7 +88,8 @@ function StreamingLines({
         return;
       }
 
-      setCurrentLineText((prev) => prev + currentLine.text.charAt(charIdx));
+      const char = currentLine.text.charAt(charIdx);
+      setCurrentLineText((prev) => prev + char);
       charIdx++;
 
       if (charIdx >= currentLine.text.length) {

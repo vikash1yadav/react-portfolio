@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalInfo } from "@/data/content";
@@ -119,14 +120,14 @@ export function Hero() {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </button>
 
-            <a
+            <Link
               href={personalInfo.resumeUrl}
               download="Vikas_Kumar_Resume.pdf"
               className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-xs transition-all hover:bg-muted hover:scale-[1.02] focus:outline-hidden"
             >
               <Download size={16} />
               Download Resume
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

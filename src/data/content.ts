@@ -122,29 +122,49 @@ export const experience: ExperienceItem[] = [
   },
   {
     company: "Raysteeds Infotech Pvt Ltd.",
-    role: "Software Development Engineer",
+    role: "Software Development Engineer (MERN / PERN Stack)",
     period: "Nov 2021 – Sept 2024",
     location: "Dehradun, India",
     projects: [
       {
-        name: "E-Commerce & Survey Engineering Projects",
-        description: "Delivering business-critical applications (Top Ten Electronics, NAVGAT Survey, Swachh Sagar, Eplan, Yall Dating).",
+        name: "IRCLASS Maritime Audit & Compliance Suite",
+        description: "A suite of digital portals (RO-Audit, DGS-Audit, IFCR, IRNAVGATH, E-Plan, BDN) built for the Indian Register of Shipping and Directorate General of Shipping.",
         achievements: [
-          "Amplified e-commerce sales by 70% through strategic SEO techniques in Next.js, achieving over $100,000 in monthly revenue with a portfolio exceeding 50,000 products.",
-          "Developed scalable RESTful API services using Node.js and Express.js with a React.js frontend.",
-          "Reduced mediation/administrative issues by 50% in the Port Reception Facility System."
+          "Developed and launched 8+ live maritime inspection, compliance, and audit web applications serving government and port authorities.",
+          "Engineered a secure digital signature suite specifically designed for PDF verification, streamlining plan approval times by 35%.",
+          "Architected RESTful APIs using Node.js and Express, integrated with highly interactive React.js frontends featuring React Context for complex state management.",
+          "Implemented background Cron services for inventory tracking, bunker delivery note reporting, and automated ballast water audit workflows."
+        ]
+      },
+      {
+        name: "TopTen Electronics E-Commerce Platform",
+        description: "A high-traffic electronics retail web application managing a catalog of 50k+ items.",
+        achievements: [
+          "Boosted organic sales by 70% and achieved $100K+ monthly revenue by implementing Next.js SEO optimizations and improving Core Web Vitals.",
+          "Built a CronJob-driven transactional messaging service in Node.js to handle order status updates and promotional campaigns.",
+          "Integrated social login and registration options to lower checkout drop-off rates by 15%."
+        ]
+      },
+      {
+        name: "Real-time Mobile & Consumer Apps (Yall & Woof)",
+        description: "Geo-location and community platforms built with the PERN stack.",
+        achievements: [
+          "Developed high-throughput geographical query APIs in Sequelize/PostgreSQL to find nearby users within dynamic radiuses.",
+          "Implemented low-latency direct and group messaging using Socket.io and Firebase Realtime Database.",
+          "Integrated Razorpay payment processing and configured Firebase Cloud Messaging (FCM) for push notifications."
         ]
       }
     ]
   },
   {
     company: "Raysteeds Infotech Pvt Ltd.",
-    role: "Software Engineer - Intern",
+    role: "Software Engineer Intern",
     period: "June 2021 – Oct 2021",
     location: "Dehradun, India",
     achievements: [
-      "Worked as a full-stack developer across 3 parallel company projects, building React.js frontends, Node.js backends, MongoDB integrations, and styling with Material UI/Semantic UI.",
-      "Integrated AWS S3 for media storage and AWS SES for transactional email deliveries."
+      "Assisted in full-stack development of React.js interfaces and Node.js backend integrations.",
+      "Configured AWS S3 buckets for media asset storage and integrated AWS SES for transactional email templates.",
+      "Leveraged MongoDB, Material UI, and Semantic UI to speed up page building cycles by 25%."
     ]
   }
 ];

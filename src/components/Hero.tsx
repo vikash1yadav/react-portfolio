@@ -17,16 +17,34 @@ export function Hero() {
   const commandText = "cat vikas-kumar.txt";
 
   useEffect(() => {
+    let isActive = true;
+    const timers: NodeJS.Timeout[] = [];
+
+    const safeSetInterval = (fn: () => void, delay: number) => {
+      const id = setInterval(() => {
+        if (isActive) fn();
+      }, delay);
+      timers.push(id);
+      return id;
+    };
+
+    const safeSetTimeout = (fn: () => void, delay: number) => {
+      const id = setTimeout(() => {
+        if (isActive) fn();
+      }, delay);
+      timers.push(id);
+      return id;
+    };
+
     // Stage 1: Type Command
     let currentIdx = 0;
-    const commandInterval = setInterval(() => {
+    const commandInterval = safeSetInterval(() => {
       if (currentIdx < commandText.length) {
         setTypedCommand((prev) => prev + commandText.charAt(currentIdx));
         currentIdx++;
       } else {
         clearInterval(commandInterval);
-        // Wait briefly, then start typing name
-        setTimeout(() => {
+        safeSetTimeout(() => {
           setActiveStep("name");
           typeName();
         }, 300);
@@ -36,13 +54,13 @@ export function Hero() {
     // Stage 2: Type Name
     const typeName = () => {
       let nameIdx = 0;
-      const nameInterval = setInterval(() => {
+      const nameInterval = safeSetInterval(() => {
         if (nameIdx < personalInfo.name.length) {
           setTypedName((prev) => prev + personalInfo.name.charAt(nameIdx));
           nameIdx++;
         } else {
           clearInterval(nameInterval);
-          setTimeout(() => {
+          safeSetTimeout(() => {
             setActiveStep("title");
             typeTitle();
           }, 200);
@@ -53,13 +71,13 @@ export function Hero() {
     // Stage 3: Type Title
     const typeTitle = () => {
       let titleIdx = 0;
-      const titleInterval = setInterval(() => {
+      const titleInterval = safeSetInterval(() => {
         if (titleIdx < personalInfo.title.length) {
           setTypedTitle((prev) => prev + personalInfo.title.charAt(titleIdx));
           titleIdx++;
         } else {
           clearInterval(titleInterval);
-          setTimeout(() => {
+          safeSetTimeout(() => {
             setActiveStep("subtitle");
             typeSubtitle();
           }, 150);
@@ -70,13 +88,13 @@ export function Hero() {
     // Stage 4: Type Subtitle
     const typeSubtitle = () => {
       let subtitleIdx = 0;
-      const subtitleInterval = setInterval(() => {
+      const subtitleInterval = safeSetInterval(() => {
         if (subtitleIdx < personalInfo.subtitle.length) {
           setTypedSubtitle((prev) => prev + personalInfo.subtitle.charAt(subtitleIdx));
           subtitleIdx++;
         } else {
           clearInterval(subtitleInterval);
-          setTimeout(() => {
+          safeSetTimeout(() => {
             setActiveStep("bio");
             typeBio();
           }, 150);
@@ -87,7 +105,7 @@ export function Hero() {
     // Stage 5: Type Bio/Value Prop
     const typeBio = () => {
       let bioIdx = 0;
-      const bioInterval = setInterval(() => {
+      const bioInterval = safeSetInterval(() => {
         if (bioIdx < personalInfo.valueProp.length) {
           setTypedBio((prev) => prev + personalInfo.valueProp.charAt(bioIdx));
           bioIdx++;
@@ -99,7 +117,11 @@ export function Hero() {
     };
 
     return () => {
-      // Clean up intervals handled lexically
+      isActive = false;
+      timers.forEach((id) => {
+        clearInterval(id);
+        clearTimeout(id);
+      });
     };
   }, []);
 
@@ -149,43 +171,35 @@ export function Hero() {
             )}
           </div>
 
-          {/* Main Headings */}
-          {activeStep !== "command" && (
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl font-mono min-h-[50px] sm:min-h-[70px] md:min-h-[80px]">
-              {typedName}
-              {activeStep === "name" && (
-                <span className="inline-block w-2.5 h-8 sm:w-3.5 sm:h-12 bg-primary-accent ml-1 animate-pulse" />
-              )}
-            </h1>
-          )}
+          {/* Main Headings (Always mounted to prevent layout shifts & React mount latency) */}
+          <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl font-mono min-h-[50px] sm:min-h-[70px] md:min-h-[80px]">
+            {typedName}
+            {activeStep === "name" && (
+              <span className="inline-block w-2.5 h-8 sm:w-3.5 sm:h-12 bg-primary-accent ml-1 animate-pulse" />
+            )}
+          </h1>
 
-          {activeStep !== "command" && activeStep !== "name" && (
-            <p className="mt-4 text-xl font-bold tracking-tight text-primary-accent sm:text-2xl md:text-3xl font-mono min-h-[30px] sm:min-h-[36px]">
-              {typedTitle}
-              {activeStep === "title" && (
-                <span className="inline-block w-2.5 h-6 sm:w-3 sm:h-8 bg-primary-accent ml-1 animate-pulse" />
-              )}
-            </p>
-          )}
+          <p className="mt-4 text-xl font-bold tracking-tight text-primary-accent sm:text-2xl md:text-3xl font-mono min-h-[30px] sm:min-h-[36px]">
+            {typedTitle}
+            {activeStep === "title" && (
+              <span className="inline-block w-2.5 h-6 sm:w-3 sm:h-8 bg-primary-accent ml-1 animate-pulse" />
+            )}
+          </p>
           
-          {activeStep !== "command" && activeStep !== "name" && activeStep !== "title" && (
-            <p className="mt-2 text-md font-medium tracking-wide text-muted-foreground/90 uppercase font-mono min-h-[24px]">
-              {typedSubtitle}
-              {activeStep === "subtitle" && (
-                <span className="inline-block w-2 h-4 bg-muted-foreground ml-1 animate-pulse" />
-              )}
-            </p>
-          )}
+          <p className="mt-2 text-md font-medium tracking-wide text-muted-foreground/90 uppercase font-mono min-h-[24px]">
+            {typedSubtitle}
+            {activeStep === "subtitle" && (
+              <span className="inline-block w-2 h-4 bg-muted-foreground ml-1 animate-pulse" />
+            )}
+          </p>
 
           {/* Value Prop */}
-          {activeStep !== "command" && activeStep !== "name" && activeStep !== "title" && activeStep !== "subtitle" && (
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground font-mono min-h-[84px] text-center">
-              {typedBio}
-              {activeStep === "bio" && (
-                <span className="inline-block w-2 h-4 bg-muted-foreground ml-1 animate-pulse" />
-              )}
-            </p>
-          )}
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground font-mono min-h-[84px] text-center">
+            {typedBio}
+            {activeStep === "bio" && (
+              <span className="inline-block w-2 h-4 bg-muted-foreground ml-1 animate-pulse" />
+            )}
+          </p>
 
           {/* CTA Buttons */}
           <AnimatePresence>

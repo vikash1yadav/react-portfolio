@@ -44,7 +44,7 @@ export const personalInfo = {
   phone: "+91 9304047599",
   location: "Hyderabad, India",
   linkedin: "https://www.linkedin.com/in/vikas-kumar-vy24754", // Paste actual URL here
-  github: "https://github.com/vikas-kumar-vy24754", // Paste actual URL here
+  github: "https://github.com/vikash1yadav", // Paste actual URL here
   resumeUrl: "/Vikas_Kumar_Resume_Updated.pdf", // Placed in public/ directory
   valueProp: "Senior Software Engineer with 4.10+ years of experience building scalable full-stack applications and Node.js microservices. Specialist in database migrations, high-throughput message queues, and Next.js optimization.",
   bioParagraphs: [
